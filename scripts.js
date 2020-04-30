@@ -41,10 +41,11 @@ const game = () => {
 
                 setTimeout(() => {
                     //Here is where we call compare hands
-                    compareHands(this.textContent, computerChoice);
-
+                    compareHands(this.value, computerChoice);
+                    
+                    
                     //Update images                    
-                    playerHand.src = `./assets/${this.textContent}.png`;
+                    playerHand.src = `./assets/${this.value}.png`;
                     computerHand.src = `./assets/${computerChoice}.png`;
                 }, 2000);
 
