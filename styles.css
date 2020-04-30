@@ -45,6 +45,8 @@ section {
 .intro button, 
 .match button,
 .play-again button {
+    position: relative;
+    z-index: 20; 
     width: 150px; 
     height: 50px; 
     background: none; 

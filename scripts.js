@@ -1,4 +1,4 @@
-const winnerPoints = 1;
+const winnerPoints = 5;
 
 const game = () => {
     let pScore = 0; 
@@ -60,22 +60,31 @@ const game = () => {
         const playAgainDiv = document.querySelector(".play-again");
         const playAgainButton = document.querySelector(".play-again button");
         
- 
+        //Announcing winner 
         if (pScore == winnerPoints) {
             winner.textContent = "You won the game!";
         } else if (cScore == winnerPoints) {
             winner.textContent = "The computer beat you...";
         }
 
+        //Fading in the "play again" button 
         optionButtons.classList.add("fadeOut");
         playAgainDiv.classList.remove("fadeOut");
 
+        //Resetting game
         playAgainButton.addEventListener("click", () => {
-            console.log("Hey, you clicked on this button")
             const playerScore = document.querySelector(".player-score p");
             const computerScore = document.querySelector(".computer-score p");
+            const playerHand = document.querySelector(".player-hand");
+            const computerHand = document.querySelector(".computer-hand");
+
             playerScore.textContent = 0; 
             computerScore.textContent = 0; 
+            winner.textContent = "Choose an option";
+            playAgainDiv.classList.add("fadeOut");
+            optionButtons.classList.remove("fadeOut");
+            playerHand.src = "./assets/rock.png";
+            computerHand.src = "./assets/rock.png";
         });
     }
 
@@ -87,6 +96,8 @@ const game = () => {
 
         if (pScore == winnerPoints || cScore == winnerPoints) {
             endGame(pScore, cScore);
+            pScore = 0;
+            cScore = 0; 
         }
     }    
 
