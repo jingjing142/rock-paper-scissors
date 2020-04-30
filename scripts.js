@@ -1,3 +1,5 @@
+const winnerPoints = 1;
+
 const game = () => {
     let pScore = 0; 
     let cScore = 0; 
@@ -52,11 +54,40 @@ const game = () => {
         });
     };
 
+    const endGame = (pScore, cScore) => {
+        const winner = document.querySelector(".winner");
+        const optionButtons = document.querySelector(".options");
+        const playAgainDiv = document.querySelector(".play-again");
+        const playAgainButton = document.querySelector(".play-again button");
+        
+ 
+        if (pScore == winnerPoints) {
+            winner.textContent = "You won the game!";
+        } else if (cScore == winnerPoints) {
+            winner.textContent = "The computer beat you...";
+        }
+
+        optionButtons.classList.add("fadeOut");
+        playAgainDiv.classList.remove("fadeOut");
+
+        playAgainButton.addEventListener("click", () => {
+            console.log("Hey, you clicked on this button")
+            const playerScore = document.querySelector(".player-score p");
+            const computerScore = document.querySelector(".computer-score p");
+            playerScore.textContent = 0; 
+            computerScore.textContent = 0; 
+        });
+    }
+
     const updateScore = () => {
         const playerScore = document.querySelector(".player-score p");
         const computerScore = document.querySelector(".computer-score p");
         playerScore.textContent = pScore; 
         computerScore.textContent = cScore; 
+
+        if (pScore == winnerPoints || cScore == winnerPoints) {
+            endGame(pScore, cScore);
+        }
     }    
 
     const compareHands = (playerChoice, computerChoice) => {
@@ -111,8 +142,6 @@ const game = () => {
                 return;
             }
         }
-        
-
     }
 
     // Call all the inner functions
@@ -121,6 +150,4 @@ const game = () => {
 }
 
 //Start the game function
-
 game();
-
