@@ -42,10 +42,8 @@ const game = () => {
                     //Here is where we call compare hands
                     compareHands(this.textContent, computerChoice);
 
-                    //Update images
-                    this.textContent.toLowerCase();
-                    
-                    playerHand.src = `./assets/${this.textContent}.png`;
+                    //Update images                    
+                    playerHand.src = `./assets/${this.value}.png`;
                     computerHand.src = `./assets/${computerChoice}.png`;
                 }, 2000);
 
