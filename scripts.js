@@ -28,6 +28,7 @@ const game = () => {
                 this.style.animation = "";
             });
         });
+        
         //Computer options
         const computerOptions = ["rock", "paper", "scissors"];
 
@@ -43,7 +44,7 @@ const game = () => {
                     compareHands(this.textContent, computerChoice);
 
                     //Update images                    
-                    playerHand.src = `./assets/${this.value}.png`;
+                    playerHand.src = `./assets/${this.textContent}.png`;
                     computerHand.src = `./assets/${computerChoice}.png`;
                 }, 2000);
 
